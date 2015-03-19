@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  validates :password, length: { minimum: 6 }
+
   #gives us the ability to store a securely hashed password_digest attribute to the database
   ###What is a password_digest attribute? password_digest is a column in your model that will hold the encrypted version of the password
 
