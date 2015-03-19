@@ -14,5 +14,3 @@ class User < ActiveRecord::Base
   #an authenticate method that returns the user when the password is correct and false otherwise
 end
 
-# What does ActiveRecord::Base contain?
-
