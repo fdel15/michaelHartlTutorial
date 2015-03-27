@@ -8,11 +8,12 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6 }
 
-  #gives us the ability to store a securely hashed password_digest attribute to the database
-  ###What is a password_digest attribute? password_digest is a column in your model that will hold the encrypted version of the password
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ?
+    BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
 
-  #a pair of virtual attributes (password and password_confirmation) including presence validations upon object creation and a validation requiring that they match
+    BCrypt::Password.create(string, cost: cost)
+  end
 
-  #an authenticate method that returns the user when the password is correct and false otherwise
 end
 
