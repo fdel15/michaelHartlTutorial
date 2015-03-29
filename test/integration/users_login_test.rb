@@ -41,4 +41,8 @@ class UsersLogin < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", logout_path, count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
   end
+
+  test "authenticated? should return false for user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
 end
