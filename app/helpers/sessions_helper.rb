@@ -52,5 +52,10 @@ module SessionsHelper
     end
   end
 
+  private
+
+    def integration_test?
+      defined?(post_via_redirect)
+    end
 
 end
