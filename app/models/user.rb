@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ?
