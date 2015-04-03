@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    debugger
+    @users = User.paginate(page: params[:page])
   end
 
   def show
