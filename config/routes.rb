@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:edit, :new, :create, :update]
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
