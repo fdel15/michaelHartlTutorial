@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
     update_attribute(:activated_at, Time.zone.now)
   end
 
+  def send_activation_email
+    Usermailer.account_activation(self).deliver_now
+  end
+
   private
 
   def downcase_email
