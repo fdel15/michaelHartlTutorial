@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
     update_attribute(:reset_sent_at, Time.now.zone)
   end
 
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
   private
 
   def downcase_email
