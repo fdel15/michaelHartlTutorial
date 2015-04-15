@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id]) and return unless !User.find(params[:id]).activated?
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def edit
